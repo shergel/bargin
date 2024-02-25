@@ -86,20 +86,20 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& input = InputManager::GetInstance();
 
 	// done : game loop
-	bool doContinue = true;
+	bool quit = false;
 	auto time_before = std::chrono::high_resolution_clock::now();
 
 	float lag = 0.0f;
 	const float fixed_time_step = 30.f;
 
-	while (doContinue)
+	while (!quit)
 	{
 		const auto time_now = std::chrono::high_resolution_clock::now();
 		const float time_delta = std::chrono::duration<float>(time_now - time_before).count();
 		time_before = time_now;
 		lag += time_delta;
 
-		doContinue = input.ProcessInput();
+		quit = !(input.ProcessInput());
 
 		while (lag >= fixed_time_step)
 		{
