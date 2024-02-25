@@ -5,6 +5,7 @@
 #include <type_traits>
 #include <cassert>
 #include "Component.h"
+#include <iostream>
 
 namespace bgn
 {
@@ -12,7 +13,7 @@ namespace bgn
 	class Texture2D;
 
 	// todo: this should become final.
-	class GameObject
+	class GameObject 
 	{
 	public:
 		virtual void Update(const float deltaTime);
