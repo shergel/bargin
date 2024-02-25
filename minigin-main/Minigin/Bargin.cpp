@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "Minigin.h"
+#include "Bargin.h"
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Renderer.h"
@@ -42,7 +42,7 @@ void PrintSDLVersion()
 		version.major, version.minor, version.patch);
 }
 
-dae::Minigin::Minigin(const std::string& dataPath)
+bgn::Bargin::Bargin(const std::string& dataPath)
 {
 	PrintSDLVersion();
 
@@ -69,7 +69,7 @@ dae::Minigin::Minigin(const std::string& dataPath)
 	ResourceManager::GetInstance().Init(dataPath);
 }
 
-dae::Minigin::~Minigin()
+bgn::Bargin::~Bargin()
 {
 	Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(g_window);
@@ -77,7 +77,7 @@ dae::Minigin::~Minigin()
 	SDL_Quit();
 }
 
-void dae::Minigin::Run(const std::function<void()>& load)
+void bgn::Bargin::Run(const std::function<void()>& load)
 {
 	load();
 
@@ -90,7 +90,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto time_before = std::chrono::high_resolution_clock::now();
 
 	float lag = 0.0f;
-	const float fixed_time_step = 30.f;
+	const float fixed_time_step = 0.03f;
 
 	while (!quit)
 	{
