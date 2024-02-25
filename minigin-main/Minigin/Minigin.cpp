@@ -9,6 +9,8 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
+#include <chrono> //
+#include <thread> //
 
 SDL_Window* g_window{};
 
@@ -32,19 +34,19 @@ void PrintSDLVersion()
 		version.major, version.minor, version.patch);
 
 	SDL_TTF_VERSION(&version)
-	printf("We compiled against SDL_ttf version %u.%u.%u ...\n",
-		version.major, version.minor, version.patch);
+		printf("We compiled against SDL_ttf version %u.%u.%u ...\n",
+			version.major, version.minor, version.patch);
 
 	version = *TTF_Linked_Version();
 	printf("We are linking against SDL_ttf version %u.%u.%u.\n",
 		version.major, version.minor, version.patch);
 }
 
-dae::Minigin::Minigin(const std::string &dataPath)
+dae::Minigin::Minigin(const std::string& dataPath)
 {
 	PrintSDLVersion();
-	
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
+
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	}
@@ -57,7 +59,7 @@ dae::Minigin::Minigin(const std::string &dataPath)
 		480,
 		SDL_WINDOW_OPENGL
 	);
-	if (g_window == nullptr) 
+	if (g_window == nullptr)
 	{
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
 	}
@@ -83,12 +85,34 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 
-	// todo: this update loop could use some work.
+	// done : game loop
 	bool doContinue = true;
+	auto time_before = std::chrono::high_resolution_clock::now();
+
+	float lag = 0.0f;
+	const float fixed_time_step = 30.f;
+
 	while (doContinue)
 	{
+		const auto time_now = std::chrono::high_resolution_clock::now();
+		const float time_delta = std::chrono::duration<float>(time_now - time_before).count();
+		time_before = time_now;
+		lag += time_delta;
+
 		doContinue = input.ProcessInput();
-		sceneManager.Update();
+
+		while (lag >= fixed_time_step)
+		{
+			//fixed_update(fixed_time_step);
+			lag -= fixed_time_step;
+		}
+
+		sceneManager.Update(); //update(time_delta)
 		renderer.Render();
+
+		const int target_fps = 60;
+		const int ms_per_frame = 1000 / target_fps;
+		const auto time_sleep = time_now + std::chrono::milliseconds(ms_per_frame) - std::chrono::high_resolution_clock::now();
+		std::this_thread::sleep_for(time_sleep);
 	}
 }
