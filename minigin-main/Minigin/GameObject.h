@@ -15,7 +15,8 @@ namespace bgn
 	class GameObject
 	{
 	public:
-		virtual void Update();
+		virtual void Update(const float deltaTime);
+		virtual void FixedUpdate(const float fixedTime);
 		virtual void Render() const;
 
 		void SetTexture(const std::string& filename);

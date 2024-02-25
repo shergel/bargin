@@ -1,11 +1,19 @@
 #include "SceneManager.h"
 #include "Scene.h"
 
-void bgn::SceneManager::Update()
+void bgn::SceneManager::Update(const float deltaTime)
 {
 	for(auto& scene : m_scenes)
 	{
-		scene->Update();
+		scene->Update(deltaTime);
+	}
+}
+
+void bgn::SceneManager::FixedUpdate(const float fixedTime)
+{
+	for (auto& scene : m_scenes)
+	{
+		scene->FixedUpdate(fixedTime);
 	}
 }
 

@@ -90,24 +90,24 @@ void bgn::Bargin::Run(const std::function<void()>& load)
 	auto time_before = std::chrono::high_resolution_clock::now();
 
 	float lag = 0.0f;
-	const float fixed_time_step = 0.03f;
+	const float fixedTime = 0.03f;
 
 	while (!quit)
 	{
 		const auto time_now = std::chrono::high_resolution_clock::now();
-		const float time_delta = std::chrono::duration<float>(time_now - time_before).count();
+		const float deltaTime = std::chrono::duration<float>(time_now - time_before).count();
 		time_before = time_now;
-		lag += time_delta;
+		lag += deltaTime;
 
 		quit = !(input.ProcessInput());
 
-		while (lag >= fixed_time_step)
+		while (lag >= fixedTime)
 		{
-			//fixed_update(fixed_time_step);
-			lag -= fixed_time_step;
+			sceneManager.FixedUpdate(fixedTime);
+			lag -= fixedTime;
 		}
 
-		sceneManager.Update(); //update(time_delta)
+		sceneManager.Update(deltaTime); //update(time_delta)
 		renderer.Render();
 
 		const int target_fps = 60;

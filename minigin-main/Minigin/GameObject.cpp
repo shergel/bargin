@@ -5,7 +5,13 @@
 
 bgn::GameObject::~GameObject() = default;
 
-void bgn::GameObject::Update(){}
+void bgn::GameObject::Update([[maybe_unused]] const float deltaTime)
+{
+}
+
+void bgn::GameObject::FixedUpdate([[maybe_unused]] const float fixedTime)
+{
+}
 
 void bgn::GameObject::Render() const
 {
