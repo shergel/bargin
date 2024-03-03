@@ -54,7 +54,7 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextObject.h">
+    <ClInclude Include="TextComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
@@ -86,7 +86,7 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextObject.cpp">
+    <ClCompile Include="TextComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
