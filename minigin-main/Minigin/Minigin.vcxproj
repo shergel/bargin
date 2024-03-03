@@ -175,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="Component.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FPSComponent.h" />
     <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputManager.h" />
@@ -191,6 +192,7 @@
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FPSComponent.cpp" />
     <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputManager.cpp" />

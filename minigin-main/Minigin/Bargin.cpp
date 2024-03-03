@@ -85,13 +85,14 @@ void bgn::Bargin::Run(const std::function<void()>& load)
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 
-	// done : game loop
 	bool quit = false;
 	auto time_before = std::chrono::high_resolution_clock::now();
 
 	float lag = 0.0f;
 	const float fixedTime = 0.03f;
 
+	const int target_fps = 60;
+	const int ms_per_frame = 1000 / target_fps;
 	while (!quit)
 	{
 		const auto time_now = std::chrono::high_resolution_clock::now();
@@ -107,11 +108,9 @@ void bgn::Bargin::Run(const std::function<void()>& load)
 			lag -= fixedTime;
 		}
 
-		sceneManager.Update(deltaTime); //update(time_delta)
+		sceneManager.Update(deltaTime);
 		renderer.Render();
 
-		const int target_fps = 60;
-		const int ms_per_frame = 1000 / target_fps;
 		const auto time_sleep = time_now + std::chrono::milliseconds(ms_per_frame) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(time_sleep);
 	}

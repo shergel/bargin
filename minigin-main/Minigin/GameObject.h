@@ -11,8 +11,7 @@ namespace bgn
 	class Component;
 	class Texture2D;
 
-	// todo: this should become final.
-	class GameObject 
+	class GameObject final
 	{
 	public:
 		virtual void Update(const float deltaTime);

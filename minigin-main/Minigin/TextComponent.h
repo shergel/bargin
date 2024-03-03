@@ -8,10 +8,10 @@ namespace bgn
 {
 	class Font;
 	class Texture2D;
-	class TextComponent final : public Component
+	class TextComponent : public Component
 	{
 	public:
-		void Update(float deltaTime) override;
+		virtual void Update(float deltaTime) override;
 		void Render() const;
 
 		void SetText(const std::string& text);
@@ -23,7 +23,7 @@ namespace bgn
 		TextComponent(TextComponent&& other) = delete;
 		TextComponent& operator=(const TextComponent& other) = delete;
 		TextComponent& operator=(TextComponent&& other) = delete;
-	private:
+	protected:
 		bool m_needsUpdate;
 		std::string m_text;
 		//Transform m_transform{};
