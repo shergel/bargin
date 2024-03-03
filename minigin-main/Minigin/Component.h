@@ -7,10 +7,9 @@ namespace bgn
 	{
 	public:
 		Component() = default;
-		~Component() = default;
-	protected :
-		GameObject* m_parent = nullptr;
-	private:
+		virtual ~Component() = default;
 		void SetParent(GameObject* parent);
+	protected:
+		GameObject* m_parent = nullptr;
 	};
 }

@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
+#include <typeinfo>
+#include "ImageComponent.h"
 
 bgn::GameObject::~GameObject() = default;
 
@@ -15,11 +17,17 @@ void bgn::GameObject::FixedUpdate([[maybe_unused]] const float fixedTime)
 
 void bgn::GameObject::Render() const
 {
-	const auto& pos = m_transform.GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_texture, pos.x, pos.y);
-}
+    [[maybe_unused]] const auto& pos = m_transform.GetPosition();
 
-void bgn::GameObject::SetTexture(const std::string& filename)
+    for (const auto& comp : m_components)
+    {
+        if (auto imageComp = dynamic_cast<const bgn::ImageComponent*>(comp.get()))
+        {
+            imageComp->Render();
+        }
+    }
+}
+void bgn::GameObject::SetTexture(const std::string& filename) //c
 {
 	m_texture = ResourceManager::GetInstance().LoadTexture(filename);
 }

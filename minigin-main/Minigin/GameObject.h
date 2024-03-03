@@ -5,7 +5,7 @@
 #include <type_traits>
 #include <cassert>
 #include "Component.h"
-#include <iostream>
+#include <iostream> //c
 
 namespace bgn
 {
@@ -18,10 +18,11 @@ namespace bgn
 	public:
 		virtual void Update(const float deltaTime);
 		virtual void FixedUpdate(const float fixedTime);
-		virtual void Render() const;
+		virtual void Render() const; //c
 
-		void SetTexture(const std::string& filename);
+		void SetTexture(const std::string& filename); //c
 		void SetPosition(float x, float y);
+		glm::vec3 GetPosition(){ return m_transform.GetPosition(); }
 
 		GameObject() = default;
 		virtual ~GameObject();
@@ -47,25 +48,24 @@ namespace bgn
 
 		std::vector <std::unique_ptr<Component>> m_components;
 		// todo: mmm, every gameobject has a texture? Is that correct?
-		std::shared_ptr<Texture2D> m_texture{};
+		std::shared_ptr<Texture2D> m_texture{}; //c
 	};
 
 #pragma region TemplateMethods
 
 	template<typename T>
-	bool GameObject::AddComponent(std::unique_ptr<T> comp)
+	inline bool GameObject::AddComponent(std::unique_ptr<T> comp)
 	{
 		static_assert(std::is_base_of<Component, T>::value, "Invalid as component");
-		//if (this->HasComponent<T>()) { static_assert(false, "Duplicate component not allowed"); } //todo : what if I need 0 text components?
 
-		m_components.push_back(comp);
+		m_components.push_back(std::move(comp));
 		m_components.back()->SetParent(this);
 
 		return true;
 	}
 
 	template<typename T>
-	bool GameObject::RemoveComponent()
+	inline bool GameObject::RemoveComponent()
 	{
 		for (auto i = m_components.begin(); i != m_components.end(); ++i)
 		{
@@ -79,7 +79,7 @@ namespace bgn
 	}
 
 	template<typename T>
-	bool GameObject::HasComponent()
+	inline bool GameObject::HasComponent()
 	{
 		for (const auto& comp : m_components)
 		{
@@ -92,7 +92,7 @@ namespace bgn
 	}
 
 	template<typename T>
-	T* GameObject::GetComponent() const
+	inline T* GameObject::GetComponent() const
 	{
 		for (auto i{ m_components.begin() }; i != m_components.end(); ++i)
 		{
