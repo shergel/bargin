@@ -17,8 +17,6 @@ void bgn::GameObject::FixedUpdate([[maybe_unused]] const float fixedTime)
 
 void bgn::GameObject::Render() const
 {
-    [[maybe_unused]] const auto& pos = m_transform.GetPosition();
-
     for (const auto& comp : m_components)
     {
         if (auto imageComp = dynamic_cast<const bgn::ImageComponent*>(comp.get()))
@@ -26,10 +24,6 @@ void bgn::GameObject::Render() const
             imageComp->Render();
         }
     }
-}
-void bgn::GameObject::SetTexture(const std::string& filename) //c
-{
-	m_texture = ResourceManager::GetInstance().LoadTexture(filename);
 }
 
 void bgn::GameObject::SetPosition(float x, float y)

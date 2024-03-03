@@ -5,7 +5,6 @@
 #include <type_traits>
 #include <cassert>
 #include "Component.h"
-#include <iostream> //c
 
 namespace bgn
 {
@@ -18,9 +17,8 @@ namespace bgn
 	public:
 		virtual void Update(const float deltaTime);
 		virtual void FixedUpdate(const float fixedTime);
-		virtual void Render() const; //c
+		virtual void Render() const;
 
-		void SetTexture(const std::string& filename); //c
 		void SetPosition(float x, float y);
 		glm::vec3 GetPosition(){ return m_transform.GetPosition(); }
 
@@ -47,8 +45,6 @@ namespace bgn
 		Transform m_transform{};
 
 		std::vector <std::unique_ptr<Component>> m_components;
-		// todo: mmm, every gameobject has a texture? Is that correct?
-		std::shared_ptr<Texture2D> m_texture{}; //c
 	};
 
 #pragma region TemplateMethods
