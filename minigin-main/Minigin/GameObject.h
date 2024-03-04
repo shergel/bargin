@@ -28,7 +28,7 @@ namespace bgn
 		GameObject& operator=(GameObject&& other) = delete;
 
 		//Location
-		const glm::vec3 GetWorldPosition() { return  (m_pivotPosition.GetPosition()+m_localPosition.GetPosition());}
+		const glm::vec3 GetWorldPosition();
 		void SetPivotPosition(const float x, const float y);
 		void SetPivotPosition(glm::vec3 pos) { SetPivotPosition(pos.x, pos.y); }
 		const glm::vec3 GetPivotPosition() { return m_pivotPosition.GetPosition();}
@@ -74,7 +74,7 @@ namespace bgn
 
 		bool m_flagOrphaned{};
 		bool m_positionIsDirty{};
-		void SetPositionDirty(bool boolean = true) { m_positionNeedsUpdate = boolean; }
+		void SetPositionDirty(bool boolean = true);
 	};
 
 #pragma region TemplateMethods

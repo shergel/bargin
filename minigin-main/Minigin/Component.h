@@ -10,7 +10,7 @@ namespace bgn
 		virtual ~Component() = default;
 		void SetParent(GameObject* parent);
 
-		virtual void Update([[maybe_unused]] float deltaTime){};
+		virtual void Update( [[maybe_unused]] float deltaTime){}
 	protected:
 		GameObject* m_parent = nullptr;
 	};

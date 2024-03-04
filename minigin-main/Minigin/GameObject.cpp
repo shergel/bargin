@@ -45,6 +45,16 @@ namespace bgn
 		}
 	}
 
+	const glm::vec3 GameObject::GetWorldPosition()
+	{
+		glm::vec3 result{};
+		
+		result = (m_pivotPosition.GetPosition() + m_localPosition.GetPosition());
+
+		return result;
+	}
+
+	
 	void GameObject::SetPivotPosition(const float x, const float y)
 	{
 		m_pivotPosition.SetPosition(x, y, 0.0f);
@@ -117,9 +127,6 @@ namespace bgn
 
 		/* ADD CHILDREN TO HOUSEHOLD */
 		m_children.push_back(child);
-
-		/* UPDATE POSITION */
-		SetPositionDirty();
 	}
 	void GameObject::RemoveChild(GameObject* child)
 	{
@@ -132,9 +139,6 @@ namespace bgn
 		/* SET AS ORPHAN */
 		child->SetIsOrphaned(true);
 		SetParent(nullptr);
-
-		/* UPDATE POSITION */
-		SetPositionDirty();
 	}
 	const bool GameObject::IsChild(GameObject* potentialChild)
 	{
@@ -145,6 +149,15 @@ namespace bgn
 		}
 
 		return false;
+	}
+
+	void GameObject::SetPositionDirty(bool boolean)
+	{
+		{ m_positionNeedsUpdate = boolean; }
+		for (GameObject* child : m_children)
+		{
+			child->SetPositionDirty();
+		}
 	}
 #pragma endregion
 
