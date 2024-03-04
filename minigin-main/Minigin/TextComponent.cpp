@@ -39,7 +39,7 @@ void bgn::TextComponent::Render() const
 
 		if (m_parent != nullptr)
 		{
-			pos = m_parent->GetPosition();
+			pos = m_parent->GetWorldPosition();
 		}
 
 		Renderer::GetInstance().RenderTexture(*m_textTexture, pos.x, pos.y);

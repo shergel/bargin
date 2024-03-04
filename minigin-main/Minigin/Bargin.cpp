@@ -91,7 +91,7 @@ void bgn::Bargin::Run(const std::function<void()>& load)
 	float lag = 0.0f;
 	const float fixedTime = 0.03f;
 
-	const int target_fps = 60;
+	const int target_fps = 144;
 	const int ms_per_frame = 1000 / target_fps;
 	while (!quit)
 	{

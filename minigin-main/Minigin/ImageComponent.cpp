@@ -12,7 +12,7 @@ namespace bgn
 
 		if (m_parent != nullptr) 
 		{
-			pos = m_parent->GetPosition();
+			pos = m_parent->GetWorldPosition();
 		}
 
 		Renderer::GetInstance().RenderTexture(*m_texture, pos.x, pos.y);

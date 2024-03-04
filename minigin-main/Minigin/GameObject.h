@@ -18,8 +18,7 @@ namespace bgn
 		virtual void FixedUpdate(const float fixedTime);
 		virtual void Render() const;
 
-		void SetPosition(float x, float y);
-		glm::vec3 GetPosition(){ return m_transform.GetPosition(); }
+
 
 		GameObject() = default;
 		virtual ~GameObject();
@@ -28,6 +27,16 @@ namespace bgn
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
 
+		//Location
+		const glm::vec3 GetWorldPosition() { return  (m_pivotPosition.GetPosition()+m_localPosition.GetPosition());}
+		void SetPivotPosition(const float x, const float y);
+		void SetPivotPosition(glm::vec3 pos) { SetPivotPosition(pos.x, pos.y); }
+		const glm::vec3 GetPivotPosition() { return m_pivotPosition.GetPosition();}
+		void SetLocalPosition(const float x, const float y);
+		void SetLocalPosition(glm::vec3 pos) { SetLocalPosition(pos.x, pos.y); }
+		const glm::vec3 GetLocalPosition() { return m_localPosition.GetPosition();}
+
+		//Components
 		template<typename T>
 		bool AddComponent(std::unique_ptr<T> comp);
 
@@ -40,10 +49,32 @@ namespace bgn
 		template<typename T>
 		T* GetComponent() const;
 
-	private:
-		Transform m_transform{};
+		//Hierarchy
+		void SetParent(GameObject* parent, bool keepWorldPosition = true);
+		GameObject* GetParent();
+		const int GetChildCount();
+		const GameObject* GetChildAt(const int idx);
 
+		void SetIsOrphaned(bool isOrphaned = true) { m_flagOrphaned = isOrphaned; }
+		const bool IsOrphaned() { return m_flagOrphaned; }
+	private:
+		Transform m_pivotPosition{};
+		Transform m_localPosition{};
+
+		//Components
 		std::vector <std::unique_ptr<Component>> m_components;
+
+		//Hierarchy
+		GameObject* m_parent = nullptr;
+		std::vector <GameObject*> m_children{};
+		bool m_positionNeedsUpdate{};
+		void AddChild(GameObject* child);
+		void RemoveChild(GameObject* child);
+		const bool IsChild(GameObject* potentialChild);
+
+		bool m_flagOrphaned{};
+		bool m_positionIsDirty{};
+		void SetPositionDirty(bool boolean = true) { m_positionNeedsUpdate = boolean; }
 	};
 
 #pragma region TemplateMethods
