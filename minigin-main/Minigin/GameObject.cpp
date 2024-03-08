@@ -20,7 +20,7 @@ namespace bgn
 
 		if (m_positionIsDirty)
 		{
-			SetPivotPosition(m_parent->GetWorldPosition());
+			SetLocalPosition(m_parent->GetWorldPosition());
 			m_positionIsDirty = false;
 		}
 	}

@@ -3,6 +3,10 @@
 #include "SceneManager.h"
 #include "Texture2D.h"
 
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
+#include "../3rdParty/imgui-1.90.4/imgui.h"
+
 int GetOpenGLDriverIndex()
 {
 	auto openglIndex = -1;
@@ -25,6 +29,11 @@ void bgn::Renderer::Init(SDL_Window* window)
 	{
 		throw std::runtime_error(std::string("SDL_CreateRenderer Error: ") + SDL_GetError());
 	}
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGui_ImplSDL2_InitForOpenGL(window, SDL_GL_GetCurrentContext());
+	ImGui_ImplOpenGL3_Init();
 }
 
 void bgn::Renderer::Render() const
@@ -35,11 +44,22 @@ void bgn::Renderer::Render() const
 
 	SceneManager::GetInstance().Render();
 	
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame();
+	ImGui::NewFrame();
+	ImGui::ShowDemoWindow();
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 	SDL_RenderPresent(m_renderer);
 }
 
 void bgn::Renderer::Destroy()
 {
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
 	if (m_renderer != nullptr)
 	{
 		SDL_DestroyRenderer(m_renderer);

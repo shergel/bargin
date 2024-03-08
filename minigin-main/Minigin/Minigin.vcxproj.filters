@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Main\Scene\GameObject\Components">
       <UniqueIdentifier>{bef6ea60-171e-4094-887b-80e7dd5cfff4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Imgui">
+      <UniqueIdentifier>{7b150272-4508-4ffa-b853-ce2879ed080f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imgui\backend">
+      <UniqueIdentifier>{b5f7e2c7-649f-41f6-9582-e70f0c9d898d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
@@ -75,6 +81,27 @@
     <ClInclude Include="RotationComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui-1.90.4\imgui.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui-1.90.4\imgui_internal.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_rectpack.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_textedit.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_truetype.h">
+      <Filter>Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_opengl3.h">
+      <Filter>Imgui\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_sdl2.h">
+      <Filter>Imgui\backend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -124,6 +151,27 @@
     </ClCompile>
     <ClCompile Include="RotationComponent.cpp">
       <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_demo.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_draw.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_tables.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_widgets.cpp">
+      <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_sdl2.cpp">
+      <Filter>Imgui\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_opengl3.cpp">
+      <Filter>Imgui\backend</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
