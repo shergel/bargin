@@ -3,6 +3,7 @@ using namespace std;
 
 #pragma region head
 #include "TrashTheCache.h"
+#include "GameObject3D.h"
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -19,15 +20,27 @@ int main()
 {
 	Message message{};
 
-	Init();
-	Iterate();
-	if (g_debug || g_timer)  message = AnnounceEnd(); 
+	switch (g_typestate) 
+	{
+	case TypeState::integers:
+		InitIntegers();
+		IterateIntegers();
+		DeinitIntegers();
+		break;
 
-	Deinit();
+	case TypeState::objects:
+		InitObjects();
+		IterateObjects();
+		DeinitObjects();
+		break;
+	}
+
+
+
 	std::cin.get();
 }
 
-void Init()
+void InitIntegers()
 {
 	Message message{};
 	if (g_timer || g_debug) message = InitStart();
@@ -40,13 +53,13 @@ void Init()
 
 	if (g_timer || g_debug) message = InitEnd();
 }
-
-void Iterate()
+void IterateIntegers()
 {
 	/*debug*/
 	Message message{};
-	cout << setprecision(2) << fixed;
+	
 	if (g_timer || g_debug) message = AnnounceIterationStart();
+	cout << setprecision(2) << fixed;
 	float percentage{};
 	float percentage_prev = percentage;
 
@@ -56,10 +69,9 @@ void Iterate()
 	long long time_delta{};
 
 	/*calc*/
-	const int maxPower = 10;
 	int step{};
 
-	for (int i{}; i <= maxPower; ++i)
+	for (int i{}; i <= g_maxPower; ++i)
 	{
 		int step = int(pow(2, i));
 
@@ -85,10 +97,10 @@ void Iterate()
 			message = PrintTime(step, time_delta);
 		}
 	}
+	if (g_timer || g_debug) message = AnnounceEnd();
 
-}
-
-void Deinit()
+} // This 
+void DeinitIntegers()
 {
 	for (int* element : g_ints)
 	{
@@ -96,6 +108,74 @@ void Deinit()
 		element = nullptr;
 	}
 }
+
+void InitObjects()
+{
+	Message message{};
+	message = InitStart();
+
+	for (int i{}; i < g_amtElements; ++i)
+	{
+		GameObject3D* element = new GameObject3D();
+		g_objects.push_back(element);
+	}
+
+    message = InitEnd();
+} 
+void IterateObjects()
+{
+	/*debug*/
+	Message message{};
+	if(g_timer || g_debug) AnnounceIterationStart();
+	cout << setprecision(2) << fixed;
+	float percentage{};
+	float percentage_prev = percentage;
+
+	/*times*/
+	chrono::steady_clock::time_point start{};
+	chrono::steady_clock::time_point end{};
+	long long time_delta{};
+
+	/*calc*/
+	int step{};
+
+	for (int i{}; i <= g_maxPower; ++i)
+	{
+		int step = int(pow(2, i));
+
+		if (g_timer) start = chrono::high_resolution_clock::now();
+		for (int j{}; j < g_amtElements; j += step)
+		{
+			/* calc */
+			percentage = float(j) / g_amtElements * 100;
+			g_objects.at(j)->ID = 20;
+
+			if (g_debug)
+			{
+				message = Loading(step, percentage);
+				percentage_prev = percentage;
+			}
+		}
+		if (g_debug) message = Done(step);
+
+		if (g_timer)
+		{
+			end = chrono::high_resolution_clock::now();
+			time_delta = chrono::duration_cast<chrono::microseconds>(end - start).count();
+			message = PrintTime(step, time_delta);
+		}
+	}
+	if (g_timer || g_debug) message = AnnounceEnd();
+
+} // This 
+void DeinitObjects()
+{
+	for (GameObject3D* element : g_objects)
+	{
+		delete element;
+		element = nullptr;
+	}
+} //todo
 
 Message InitStart()
 {
@@ -107,7 +187,6 @@ Message InitStart()
 	output.success = true;
 	return output;
 }
-
 Message InitEnd()
 {
 	Message output{};
@@ -118,13 +197,33 @@ Message InitEnd()
 	output.success = true;
 	return output;
 }
-
 Message AnnounceIterationStart()
 {
 	Message output{};
 
 	string message = " .:*-----[     ITERATING OVER VECTOR IN INTERVALS OF 2^n, n = [0, 10]     ]-----*:. ";
 	cout << WHITE << "\n" << message << "\n\n\n";
+
+	output.success = true;
+	return output;
+}
+Message PrintTime(const int step, const long long time)
+{
+	Message output{};
+
+	string message = to_string(step) + " ; " + to_string(time);
+	string buffer = (g_debug) ? "\n" : "";
+	cout << "\n" << YELLOW << message << RESET << buffer;
+
+	output.success = true;
+	return output;
+}
+Message AnnounceEnd()
+{
+	Message output{};
+
+	string message = " .:*-----[     END OF ITERATION     ]-----*:. ";
+	cout << "\n" << WHITE << message << RESET << "\n\n";
 
 	output.success = true;
 	return output;
@@ -140,36 +239,12 @@ Message Loading(const int step, const float percentage)
 	output.success = true;
 	return output;
 }
-
 Message Done(const int step)
 {
 	Message output{};
 
 	string message = " *DONE* : ITERATING IN STEPS OF 2^" + to_string(step);
 	cout << GREEN << CLEARLASTLINE << message << "\n";
-
-	output.success = true;
-	return output;
-}
-
-Message AnnounceEnd()
-{
-	Message output{};
-
-	string message = " .:*-----[     END     ]-----*:. ";
-	cout << "\n" << WHITE << message << RESET << "\n\n";
-
-	output.success = true;
-	return output;
-}
-
-Message PrintTime(const int step, const long long time)
-{
-	Message output{};
-
-	string message = to_string(step) + " ; " + to_string(time);
-	string buffer = (g_debug) ? "\n" : "";
-	cout << "\n" << YELLOW << message << RESET << buffer;
 
 	output.success = true;
 	return output;
