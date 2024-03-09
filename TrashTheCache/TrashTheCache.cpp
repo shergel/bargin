@@ -1,5 +1,6 @@
 using namespace std;
 
+
 #pragma region head
 #include "TrashTheCache.h"
 #include <iostream>
@@ -33,7 +34,7 @@ void Init()
 
 	for (int i{}; i < g_amtElements; ++i)
 	{
-		int* element = new int{};
+		int* element = new int(1);
 		g_ints.push_back(element);
 	}
 
@@ -67,6 +68,7 @@ void Iterate()
 		{
 			/* calc */
 			percentage = float(j) / g_amtElements * 100;
+			*g_ints.at(j) += 20;
 
 			if (g_debug)
 			{
