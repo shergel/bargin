@@ -11,6 +11,6 @@ struct Transform
 class GameObject3D
 {
 public:
-	Transform transform;
-	int ID;
+	Transform transform{};
+	int ID{};
 };
