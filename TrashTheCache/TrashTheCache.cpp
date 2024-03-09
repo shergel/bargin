@@ -168,7 +168,8 @@ Message PrintTime(const int step, const long long time)
 	Message output{};
 
 	string message = to_string(step) + " ; " + to_string(time);
-	cout << "\n" << YELLOW << message << RESET << "\n";
+	string buffer = (g_debug) ? "\n" : "";
+	cout << "\n" << YELLOW << message << RESET << buffer;
 
 	output.success = true;
 	return output;
