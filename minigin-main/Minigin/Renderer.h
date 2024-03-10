@@ -28,7 +28,7 @@ namespace bgn
 		void SetBackgroundColor(const SDL_Color& color) { m_clearColor = color; }
 
 	private:
-		const bool m_showimguidemo{ false }; //1003+
+		const bool m_showimguidemo{ true }; //1003+
 		const bool m_showimguicharts{ true }; //1003+
 	};
 }
