@@ -91,6 +91,14 @@ namespace bgn
 
 		// Print the average
 		std::cout << "\nAverage of non-negative numbers: " << average << "   " + std::to_string(inp) << std::endl;
+
+
+
+
+		std::vector<float> myvector = { 1, 2, 3, 4, 5, 6 };
+
+
+
 	}
 
 	void ImGuiCharts::Temp_PrintNumber1(int inp)
