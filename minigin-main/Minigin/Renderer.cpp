@@ -6,6 +6,7 @@
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
 #include "../3rdParty/imgui-1.90.4/imgui.h"
+#include "ImGuiCharts.h" // 1003+
 
 int GetOpenGLDriverIndex()
 {
@@ -47,7 +48,8 @@ void bgn::Renderer::Render() const
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
-	ImGui::ShowDemoWindow();
+	if (m_showimguidemo) ImGui::ShowDemoWindow(); //1003&
+	if (m_showimguicharts) ImGuiCharts::GetInstance().Show(); //1003+
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 

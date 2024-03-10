@@ -43,6 +43,6 @@ std::vector<GameObject3DAlt*> g_alts{};
 const int g_maxPower = 10;
 const int g_amtElements = int(pow(2, 26));
 
-const bool g_debug = false;
-const bool g_timer = true;
+bool g_debug = false;
+bool g_timer = true;
 TypeState g_typestate = TypeState::alternatives;

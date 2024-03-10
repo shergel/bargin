@@ -150,7 +150,7 @@ void IterateIntegers()
 
 	for (int i{}; i <= g_maxPower; ++i)
 	{
-		int step = int(pow(2, i));
+		step = int(pow(2, i));
 
 		if (g_timer) start = chrono::high_resolution_clock::now();
 		for (int j{}; j < g_amtElements; j += step)
@@ -219,7 +219,7 @@ void IterateObjects()
 
 	for (int i{}; i <= g_maxPower; ++i)
 	{
-		int step = int(pow(2, i));
+		step = int(pow(2, i));
 
 		if (g_timer) start = chrono::high_resolution_clock::now();
 		for (int j{}; j < g_amtElements; j += step)
@@ -288,7 +288,7 @@ void IterateAlternatives()
 
 	for (int i{}; i <= g_maxPower; ++i)
 	{
-		int step = int(pow(2, i));
+		step = int(pow(2, i));
 
 		if (g_timer) start = chrono::high_resolution_clock::now();
 		for (int j{}; j < g_amtElements; j += step)

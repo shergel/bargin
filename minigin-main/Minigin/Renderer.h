@@ -5,6 +5,7 @@
 namespace bgn
 {
 	class Texture2D;
+	class ImGuiCharts;
 	/**
 	 * Simple RAII wrapper for the SDL renderer
 	 */
@@ -25,6 +26,10 @@ namespace bgn
 
 		const SDL_Color& GetBackgroundColor() const { return m_clearColor; }
 		void SetBackgroundColor(const SDL_Color& color) { m_clearColor = color; }
+
+	private:
+		const bool m_showimguidemo{ false }; //1003+
+		const bool m_showimguicharts{ true }; //1003+
 	};
 }
 
