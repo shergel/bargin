@@ -22,7 +22,7 @@ struct PlotConfig {
         ImU32 color = 0;
 
         // in case you need to draw multiple plots at once, use this instead of ys
-        const float **ys_list = nullptr;
+        float **ys_list = nullptr;
         // the number of plots to draw
         int ys_count = 0;
         // colors for each plot
