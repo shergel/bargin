@@ -29,6 +29,7 @@ namespace bgn
 
 		//Location
 		const glm::vec3 GetWorldPosition();
+		void Move(glm::vec2 direction);
 		void SetPivotPosition(const float x, const float y);
 		void SetPivotPosition(glm::vec3 pos) { SetPivotPosition(pos.x, pos.y); }
 		const glm::vec3 GetPivotPosition() { return m_pivotPosition.GetPosition();}

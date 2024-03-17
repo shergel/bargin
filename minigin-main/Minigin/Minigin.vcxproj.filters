@@ -141,6 +141,9 @@
     <ClInclude Include="Move2DCommand.h">
       <Filter>Header Files\InputManager.h</Filter>
     </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files\InputManager.h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -222,6 +225,12 @@
       <Filter>Source Files\Main\InputManager</Filter>
     </ClCompile>
     <ClCompile Include="Move2DCommand.cpp">
+      <Filter>Source Files\Main\InputManager\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Draft.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
       <Filter>Source Files\Main\InputManager\Commands</Filter>
     </ClCompile>
   </ItemGroup>

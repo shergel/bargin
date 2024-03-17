@@ -7,7 +7,18 @@ namespace bgn
 {
 	void Move2DCommand::Execute()
 	{
-		std::cout << "DEBUG : MOVE OBJECT!\n";
-		//actor.Move(m_direction); todo on m_obj
+		m_actor->Move({m_direction.x*m_speed, m_direction.y*m_speed});
+	}
+
+	void Move2DCommand::SetDirection(const glm::vec2& value)
+	{
+		//To make sure the result is either -1, 0 or 1 for all.
+		const int xSign = (value.x >= 0) ? 1 : -1;
+		const int ySign = (value.y >= 0) ? 1 : -1;
+
+		const int xAbs = (value.x == 0) ? 0 : 1;
+		const int yAbs = (value.y == 0) ? 0 : 1;
+
+		m_direction = { xSign * xAbs, ySign * yAbs };
 	}
 }

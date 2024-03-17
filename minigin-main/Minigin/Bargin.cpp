@@ -67,6 +67,7 @@ bgn::Bargin::Bargin(const std::string& dataPath)
 	Renderer::GetInstance().Init(g_window);
 
 	ResourceManager::GetInstance().Init(dataPath);
+	InputManager::GetInstance().Init();
 }
 
 bgn::Bargin::~Bargin()

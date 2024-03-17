@@ -7,7 +7,7 @@
 //  [X] Platform: Clipboard support.
 //  [X] Platform: Mouse support. Can discriminate Mouse/TouchScreen.
 //  [X] Platform: Keyboard support. Since 1.87 we are using the io.AddKeyEvent() function. Pass ImGuiKey values to all key functions e.g. ImGui::IsKeyPressed(ImGuiKey_Space). [Legacy SDL_SCANCODE_* values will also be supported unless IMGUI_DISABLE_OBSOLETE_KEYIO is set]
-//  [X] Platform: Gamepad support. Enabled with 'io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad'.
+//  [X] Platform: Controller support. Enabled with 'io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad'.
 //  [X] Platform: Mouse cursor shape and visibility. Disable with 'io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange'.
 //  [X] Platform: Basic IME support. App needs to call 'SDL_SetHint(SDL_HINT_IME_SHOW_UI, "1");' before SDL_CreateWindow()!.
 
@@ -117,7 +117,7 @@ struct ImGui_ImplSDL2_Data
     int                     MouseLastLeaveFrame;
     bool                    MouseCanUseGlobalState;
 
-    // Gamepad handling
+    // Controller handling
     ImVector<SDL_GameController*> Gamepads;
     ImGui_ImplSDL2_GamepadMode    GamepadMode;
     bool                          WantUpdateGamepadsList;
@@ -428,7 +428,7 @@ static bool ImGui_ImplSDL2_Init(SDL_Window* window, SDL_Renderer* renderer)
     io.ClipboardUserData = nullptr;
     io.SetPlatformImeDataFn = ImGui_ImplSDL2_SetPlatformImeData;
 
-    // Gamepad handling
+    // Controller handling
     bd->GamepadMode = ImGui_ImplSDL2_GamepadMode_AutoFirst;
     bd->WantUpdateGamepadsList = true;
 

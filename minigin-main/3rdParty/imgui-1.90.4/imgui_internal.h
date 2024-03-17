@@ -2033,7 +2033,7 @@ struct ImGuiContext
     // Viewports
     ImVector<ImGuiViewportP*> Viewports;                        // Active viewports (Size==1 in 'master' branch). Each viewports hold their copy of ImDrawData.
 
-    // Gamepad/keyboard Navigation
+    // Controller/keyboard Navigation
     ImGuiWindow*            NavWindow;                          // Focused window for navigation. Could be called 'FocusedWindow'
     ImGuiID                 NavId;                              // Focused item for navigation
     ImGuiID                 NavFocusScopeId;                    // Focused focus scope (e.g. selection code often wants to "clear other items" when landing on an item of the same scope)
@@ -2049,7 +2049,7 @@ struct ImGuiContext
     ImGuiKeyChord           NavJustMovedToKeyMods;
     ImGuiID                 NavNextActivateId;                  // Set by ActivateItem(), queued until next frame.
     ImGuiActivateFlags      NavNextActivateFlags;
-    ImGuiInputSource        NavInputSource;                     // Keyboard or Gamepad mode? THIS CAN ONLY BE ImGuiInputSource_Keyboard or ImGuiInputSource_Mouse
+    ImGuiInputSource        NavInputSource;                     // Keyboard or Controller mode? THIS CAN ONLY BE ImGuiInputSource_Keyboard or ImGuiInputSource_Mouse
     ImGuiNavLayer           NavLayer;                           // Layer we are navigating on. For now the system is hard-coded for 0=main contents and 1=menu/title bar, may expose layers later.
     ImGuiSelectionUserData  NavLastValidSelectionUserData;      // Last valid data passed to SetNextItemSelectionUser(), or -1. For current window. Not reset when focusing an item that doesn't have selection data.
     bool                    NavIdIsAlive;                       // Nav widget has been seen this frame ~~ NavRectRel is valid
@@ -2461,7 +2461,7 @@ struct IMGUI_API ImGuiWindowTempData
     ImVec1                  GroupOffset;
     ImVec2                  CursorStartPosLossyness;// Record the loss of precision of CursorStartPos due to really large scrolling amount. This is used by clipper to compensate and fix the most common use case of large scroll area.
 
-    // Keyboard/Gamepad navigation
+    // Keyboard/Controller navigation
     ImGuiNavLayer           NavLayerCurrent;        // Current layer, 0..31 (we currently only use 0..1)
     short                   NavLayersActiveMask;    // Which layers have been written to (result from previous frame)
     short                   NavLayersActiveMaskNext;// Which layers have been written to (accumulator for current frame)
@@ -3142,7 +3142,7 @@ namespace ImGui
     IMGUI_API bool          BeginComboPreview();
     IMGUI_API void          EndComboPreview();
 
-    // Gamepad/Keyboard Navigation
+    // Controller/Keyboard Navigation
     IMGUI_API void          NavInitWindow(ImGuiWindow* window, bool force_reinit);
     IMGUI_API void          NavInitRequestApplyResult();
     IMGUI_API bool          NavMoveRequestButNoResultYet();
