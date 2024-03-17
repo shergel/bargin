@@ -29,7 +29,7 @@ namespace bgn
 
 	private:
 		const bool m_showimguidemo{ false }; //1003+
-		const bool m_showimguicharts{ true }; //1003+
+		const bool m_showimguicharts{ false }; //1003+ //Charts
 	};
 }
 

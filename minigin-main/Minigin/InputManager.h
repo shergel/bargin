@@ -46,7 +46,8 @@ namespace bgn
 
 		void BindKey(SDL_Keycode keyCode, std::unique_ptr<Command> command);
 		void BindController(ControllerKey key, std::unique_ptr<Command> command);
-		void Unbind(Command* command);
+		void Unbind(SDL_Keycode keyCode);
+		void Unbind(ControllerKey key);
 
 	private:
 		std::map<SDL_Keycode, std::unique_ptr<Command>> m_keyBinds;

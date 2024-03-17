@@ -20,9 +20,25 @@ void bgn::InputManager::BindController(ControllerKey key, std::unique_ptr<Comman
 	m_controllerKeyBinds[key] = std::move(command);
 }
 
+void bgn::InputManager::Unbind(SDL_Keycode keyCode)
+{
+	auto it = m_keyBinds.find(keyCode);
+	if (it != m_keyBinds.end()) {
+		m_keyBinds.erase(it);
+	}
+}
+
+void bgn::InputManager::Unbind(ControllerKey key)
+{
+	auto it = m_controllerKeyBinds.find(key);
+	if (it != m_controllerKeyBinds.end()) {
+		m_controllerKeyBinds.erase(it);
+	}
+}
+
 bool bgn::InputManager::ProcessInput()
 {
-	for (const auto& controller : m_controllers) {controller->Update();}
+	for (const auto& controller : m_controllers) { controller->Update(); }
 
 	ProcessControllerInput();
 
@@ -36,7 +52,7 @@ void bgn::InputManager::ProcessControllerInput()
 	{
 		/*if (controller->IsStateChanged()) //will use this later
 		{*/
-			HandleControllerEvent(controller);
+		HandleControllerEvent(controller);
 		/*}*/
 	}
 }
