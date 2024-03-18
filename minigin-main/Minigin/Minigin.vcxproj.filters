@@ -233,5 +233,8 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Source Files\Main\InputManager\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="HealthComponent.cpp">
+      <Filter>Header Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

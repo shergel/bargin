@@ -18,7 +18,7 @@ namespace bgn
 	{
 
 	public:
-		
+
 		enum class ControllerKey
 		{
 			Start = XINPUT_GAMEPAD_START,
@@ -41,6 +41,13 @@ namespace bgn
 			Y = XINPUT_GAMEPAD_Y,
 		};
 
+		struct KeyBind
+		{
+			SDL_Keycode key;
+			std::unique_ptr<Command> command;
+			bool isPressed = false ;
+		};
+
 		void Init();
 		bool ProcessInput();
 
@@ -50,17 +57,17 @@ namespace bgn
 		void Unbind(ControllerKey key);
 
 	private:
-		std::map<SDL_Keycode, std::unique_ptr<Command>> m_keyBinds;
+		std::vector<KeyBind> m_keyBinds;
+		//std::map<SDL_Keycode, std::unique_ptr<Command>> m_keyBinds;
 		std::map<ControllerKey, std::unique_ptr<Command>> m_controllerKeyBinds;
 
 		void ProcessControllerInput();
 		bool ProcessKeyboardInput();
-		void HandleKeyboardEvent(const SDL_Event& event);
+		void HandleKeyboardEvent();
 
 		void HandleControllerEvent(const std::unique_ptr<bgn::Controller>& controller);
 
-		std::vector<std::unique_ptr<Controller>> m_controllers; 
-
+		std::vector<std::unique_ptr<Controller>> m_controllers;
 	};
 
 }

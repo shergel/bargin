@@ -221,6 +221,7 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FPSComponent.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="ImGuiCharts.cpp" />
