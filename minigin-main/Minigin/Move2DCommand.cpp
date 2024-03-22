@@ -1,5 +1,6 @@
 #include "Move2DCommand.h"
 #include "GameObject.h"
+#include "MovementComponent.h"
 
 #include <iostream>
 
@@ -7,7 +8,11 @@ namespace bgn
 {
 	void Move2DCommand::Execute()
 	{
-		m_actor->Move({m_direction.x*m_speed, m_direction.y*m_speed});
+		MovementComponent* movementComponent = m_actor->GetComponent<MovementComponent>();
+
+		if (movementComponent == nullptr) return;
+
+		movementComponent->Move({ m_direction.x * m_speed, m_direction.y * m_speed });
 	}
 
 	void Move2DCommand::SetDirection(const glm::vec2& value)

@@ -144,6 +144,9 @@
     <ClInclude Include="Controller.h">
       <Filter>Header Files\InputManager.h</Filter>
     </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -233,8 +236,11 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Source Files\Main\InputManager\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="HealthComponent.cpp">
+    <ClCompile Include="HealthComponent.h">
       <Filter>Header Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -54,12 +54,6 @@ namespace bgn
 		return result;
 	}
 
-	void GameObject::Move(glm::vec2 direction)
-	{
-		glm::vec3 current = m_pivotPosition.GetPosition();
-		SetPivotPosition(current.x + direction.x , current.y + direction.y);
-	}
-
 	void GameObject::SetPivotPosition(const float x, const float y)
 	{
 		m_pivotPosition.SetPosition(x, y, 0.0f);
