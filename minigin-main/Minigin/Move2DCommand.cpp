@@ -8,11 +8,11 @@ namespace bgn
 {
 	void Move2DCommand::Execute()
 	{
-		MovementComponent* movementComponent = m_actor->GetComponent<MovementComponent>();
+		MovementComponent* component = m_targetObj->GetComponent<MovementComponent>();
 
-		if (movementComponent == nullptr) return;
+		if (component == nullptr) return;//todo assert
 
-		movementComponent->Move({ m_direction.x * m_speed, m_direction.y * m_speed });
+		component->Move({ m_direction.x * m_speed, m_direction.y * m_speed });
 	}
 
 	void Move2DCommand::SetDirection(const glm::vec2& value)

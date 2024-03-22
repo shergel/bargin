@@ -242,5 +242,11 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
     </ClCompile>
+    <ClCompile Include="AdjustHealthCommand.h">
+      <Filter>Header Files\InputManager.h</Filter>
+    </ClCompile>
+    <ClCompile Include="AdjustHealthCommand.cpp">
+      <Filter>Source Files\Main\InputManager\Commands</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
