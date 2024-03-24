@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Main\InputManager\Commands">
       <UniqueIdentifier>{f68db4b3-3088-4673-bb9d-9c7b11abb1e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Observers">
+      <UniqueIdentifier>{d8f1a819-5e84-4d98-995a-29af988dd5e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Observers">
+      <UniqueIdentifier>{410b424c-06fb-49fd-8304-1e479aa63555}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
@@ -147,6 +153,12 @@
     <ClInclude Include="MovementComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="LifeObserver.h">
+      <Filter>Header Files\Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Header Files\Observers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -242,11 +254,14 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
     </ClCompile>
-    <ClCompile Include="AdjustHealthCommand.h">
+    <ClCompile Include="SetHealthCommand.h">
       <Filter>Header Files\InputManager.h</Filter>
     </ClCompile>
-    <ClCompile Include="AdjustHealthCommand.cpp">
+    <ClCompile Include="SetHealthCommand.cpp">
       <Filter>Source Files\Main\InputManager\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="LifeObserver.cpp">
+      <Filter>Source Files\Observers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

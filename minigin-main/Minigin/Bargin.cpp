@@ -112,6 +112,8 @@ void bgn::Bargin::Run(const std::function<void()>& load)
 		sceneManager.Update(deltaTime);
 		renderer.Render();
 
+		sceneManager.CleanUp();
+
 		const auto time_sleep = time_now + std::chrono::milliseconds(ms_per_frame) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(time_sleep);
 	}

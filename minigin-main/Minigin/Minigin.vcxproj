@@ -197,8 +197,10 @@
     <ClInclude Include="imgui_impl_sdl2.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Bargin.h" />
+    <ClInclude Include="LifeObserver.h" />
     <ClInclude Include="Move2DCommand.h" />
     <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RotationComponent.h" />
@@ -217,7 +219,8 @@
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_plot.cpp" />
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_tables.cpp" />
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_widgets.cpp" />
-    <ClCompile Include="AdjustHealthCommand.cpp" />
+    <ClCompile Include="LifeObserver.cpp" />
+    <ClCompile Include="SetHealthCommand.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Draft.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -229,7 +232,7 @@
     <ClCompile Include="ImGuiCharts.cpp" />
     <ClCompile Include="imgui_impl_opengl3.cpp" />
     <ClCompile Include="imgui_impl_sdl2.cpp" />
-    <ClCompile Include="AdjustHealthCommand.h" />
+    <ClCompile Include="SetHealthCommand.h" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Bargin.cpp" />

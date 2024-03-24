@@ -9,7 +9,10 @@
 namespace bgn
 {
 
-	GameObject::~GameObject() = default;
+	GameObject::~GameObject()
+	{
+		m_observers.clear();
+	}
 
 	void GameObject::Update(const float deltaTime)
 	{
@@ -48,7 +51,7 @@ namespace bgn
 	const glm::vec3 GameObject::GetWorldPosition()
 	{
 		glm::vec3 result{};
-		
+
 		result = (m_pivotPosition.GetPosition() + m_localPosition.GetPosition());
 
 		return result;
@@ -156,6 +159,23 @@ namespace bgn
 		for (GameObject* child : m_children)
 		{
 			child->SetPositionDirty();
+		}
+	}
+#pragma endregion
+
+#pragma region Observers
+	void GameObject::AddObserver(Observer* observer) {
+		observer->OnAdd();
+		m_observers.push_back(observer);
+	}
+
+	void GameObject::RemoveObserver(Observer* observer) {
+		m_observers.erase(std::remove(m_observers.begin(), m_observers.end(), observer), m_observers.end());
+	}
+
+	void GameObject::Notify(Event event) {
+		for (Observer* observer : m_observers) {
+			observer->OnNotify(event);
 		}
 	}
 #pragma endregion

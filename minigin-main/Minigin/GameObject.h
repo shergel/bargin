@@ -5,6 +5,7 @@
 #include <type_traits>
 #include <cassert>
 #include "Component.h"
+#include "Observer.h"
 
 namespace bgn
 {
@@ -24,6 +25,9 @@ namespace bgn
 		GameObject(GameObject&& other) = delete;
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
+
+		void Destroy() { m_hasFlagDestroy = true; }
+		const bool HasFlagDestroy() { return m_hasFlagDestroy; }
 
 		//Location
 		const glm::vec3 GetWorldPosition();
@@ -55,6 +59,10 @@ namespace bgn
 
 		void SetIsOrphaned(bool isOrphaned = true) { m_flagOrphaned = isOrphaned; }
 		const bool IsOrphaned() { return m_flagOrphaned; }
+
+		void AddObserver(Observer* observer);
+		void RemoveObserver(Observer* observer);
+		void Notify(Event event);
 	private:
 		Transform m_pivotPosition{};
 		Transform m_localPosition{};
@@ -73,6 +81,10 @@ namespace bgn
 		bool m_flagOrphaned{};
 		bool m_positionIsDirty{};
 		void SetPositionDirty(bool boolean = true);
+
+		bool m_hasFlagDestroy{false};
+
+		std::vector<Observer*> m_observers;
 	};
 
 #pragma region TemplateMethods
