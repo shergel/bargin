@@ -50,3 +50,9 @@ void Scene::Render() const
 	}
 }
 
+void Scene::CleanUp()
+{
+	m_objects.erase(std::remove_if(m_objects.begin(), m_objects.end(),
+		[](const auto& obj) { return obj->HasFlagDestroy(); }),
+		m_objects.end());
+}

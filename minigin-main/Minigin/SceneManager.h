@@ -15,6 +15,8 @@ namespace bgn
 		void Update(const float deltaTime);
 		void FixedUpdate(const float fixedTime);
 		void Render();
+		void CleanUp();
+
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;

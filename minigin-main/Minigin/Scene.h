@@ -15,6 +15,7 @@ namespace bgn
 		void Update(const float deltaTime);
 		void FixedUpdate(const float fixedTime);
 		void Render() const;
+		void CleanUp();
 
 		~Scene();
 		Scene(const Scene& other) = delete;

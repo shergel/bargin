@@ -31,3 +31,13 @@ bgn::Scene& bgn::SceneManager::CreateScene(const std::string& name)
 	m_scenes.push_back(scene);
 	return *scene;
 }
+
+void bgn::SceneManager::CleanUp()
+{
+	//todo -> find active scene -> cleanup
+	for (auto scene : m_scenes)
+	{
+		scene->CleanUp();
+	}
+	//load new file if necessary?
+}
