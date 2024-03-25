@@ -20,7 +20,6 @@ namespace bgn
 
         virtual ~Observer() {}
         //virtual void OnAdd() = 0;
-
         virtual void OnNotify(Event event) = 0;
     };
 }
