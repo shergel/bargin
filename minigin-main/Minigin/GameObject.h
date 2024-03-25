@@ -41,13 +41,10 @@ namespace bgn
 		//Components
 		template<typename T>
 		bool AddComponent(std::unique_ptr<T> comp);
-
 		template<typename T>
 		bool RemoveComponent();
-
 		template<typename T>
 		bool HasComponent();
-
 		template<typename T>
 		T* GetComponent() const;
 

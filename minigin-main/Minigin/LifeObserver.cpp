@@ -3,12 +3,16 @@
 #include "LifeObserver.h"
 #include <iostream>
 
+#include "SceneManager.h"
+#include "GameObject.h"
+#include "TextComponent.h"
 namespace bgn
 {
-
 	void LifeObserver::OnNotify(Event event)
 	{
+		m_hasMessage = true;
 		m_livesCount = event.arg;
+		std::cout << "Lives : " << m_livesCount;
 
 		switch (event.type)
 		{
@@ -26,22 +30,23 @@ namespace bgn
 		}
 	}
 
-	void   LifeObserver::LifeObserver::OnPlayerDied()
-	{	
-		std::cout << m_livesCount << std::endl;
-	}
-
-	void   LifeObserver::LifeObserver::OnPlayerRevived()
+	void  LifeObserver::OnPlayerDied()
 	{
-		
-		std::cout << m_livesCount << std::endl;
+		std::cout << "player died" << std::endl;
 	}
-
-	void   LifeObserver::LifeObserver::OnPlayerChangedHealth()
+	void   LifeObserver::OnPlayerRevived()
 	{
-		
-		std::cout << m_livesCount << std::endl;
+		std::cout << "player revived" << std::endl;
+	}
+	void   LifeObserver::OnPlayerChangedHealth()
+	{
+		std::cout << "player health changed" << std::endl;
 	}
 
-
+	const std::string LifeObserver::GetMessage()
+	{
+		const std::string message = "Lives : " + std::to_string(m_livesCount);
+		m_hasMessage = false;
+		return message;
+	}
 }
