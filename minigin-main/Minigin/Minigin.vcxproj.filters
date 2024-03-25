@@ -254,14 +254,17 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
     </ClCompile>
-    <ClCompile Include="SetHealthCommand.h">
+    <ClCompile Include="AddSubtractHealthCommand.h">
       <Filter>Header Files\InputManager.h</Filter>
     </ClCompile>
-    <ClCompile Include="SetHealthCommand.cpp">
+    <ClCompile Include="AddSubtractHealthCommand.cpp">
       <Filter>Source Files\Main\InputManager\Commands</Filter>
     </ClCompile>
     <ClCompile Include="LifeObserver.cpp">
       <Filter>Source Files\Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthComponent.cpp">
+      <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

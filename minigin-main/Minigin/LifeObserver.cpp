@@ -5,37 +5,43 @@
 
 namespace bgn
 {
-    
-        void LifeObserver::OnAdd() //must call on add for correct lifecount
-        {
-            ++m_aliveCount;
-            std::cout << "LifeObserver has been added to a GameObject. Total alive: " << m_aliveCount << std::endl;
-            
-        }
 
-        void LifeObserver::OnNotify(Event event) {
-            if (event == Event::PlayerDied) 
-            {
-                OnPlayerDied();
-            }
-            else if (event == Event::PlayerRevived) 
-            {
-                OnPlayerRevived();
-            }
-        }
+	void LifeObserver::OnNotify(Event event)
+	{
+		m_livesCount = event.arg;
 
-        void   LifeObserver::LifeObserver::OnPlayerDied()
-        {
-            --m_aliveCount;
-            ++m_deadCount;
-            std::cout << "LifeObserver: Player died. Total dead: " << m_deadCount << std::endl;
-        }
+		switch (event.type)
+		{
+		case(EventType::PlayerDied):
+			OnPlayerDied();
+			break;
+		case(EventType::PlayerRevived):
+			OnPlayerRevived();
+			break;
+		case(EventType::PlayerHealthChanged):
+			OnPlayerChangedHealth();
+			break;
+		default:
+			break;
+		}
+	}
 
-        void   LifeObserver::LifeObserver::OnPlayerRevived()
-        {
-            ++m_aliveCount;
-            --m_deadCount;
-            std::cout << "LifeObserver: Player revived. Total alive: " << m_aliveCount << std::endl;
-        }
-    
+	void   LifeObserver::LifeObserver::OnPlayerDied()
+	{	
+		std::cout << m_livesCount << std::endl;
+	}
+
+	void   LifeObserver::LifeObserver::OnPlayerRevived()
+	{
+		
+		std::cout << m_livesCount << std::endl;
+	}
+
+	void   LifeObserver::LifeObserver::OnPlayerChangedHealth()
+	{
+		
+		std::cout << m_livesCount << std::endl;
+	}
+
+
 }

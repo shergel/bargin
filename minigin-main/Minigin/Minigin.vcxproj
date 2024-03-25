@@ -219,8 +219,9 @@
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_plot.cpp" />
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_tables.cpp" />
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_widgets.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="LifeObserver.cpp" />
-    <ClCompile Include="SetHealthCommand.cpp" />
+    <ClCompile Include="AddSubtractHealthCommand.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Draft.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -232,7 +233,7 @@
     <ClCompile Include="ImGuiCharts.cpp" />
     <ClCompile Include="imgui_impl_opengl3.cpp" />
     <ClCompile Include="imgui_impl_sdl2.cpp" />
-    <ClCompile Include="SetHealthCommand.h" />
+    <ClCompile Include="AddSubtractHealthCommand.h" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Bargin.cpp" />

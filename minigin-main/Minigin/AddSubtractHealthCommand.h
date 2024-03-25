@@ -3,10 +3,10 @@
 
 namespace bgn
 {
-	class SetHealthCommand : public Command
+	class AddSubtractHealthCommand : public Command
 	{
 	public:
-		SetHealthCommand(std::shared_ptr<GameObject> targetObj, const int adjustmentValue)
+		AddSubtractHealthCommand(std::shared_ptr<GameObject> targetObj, const int adjustmentValue)
 			: m_targetObj(targetObj), m_value(adjustmentValue) {}
 
 		void Execute() override;

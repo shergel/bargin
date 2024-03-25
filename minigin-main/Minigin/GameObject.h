@@ -62,7 +62,7 @@ namespace bgn
 
 		void AddObserver(Observer* observer);
 		void RemoveObserver(Observer* observer);
-		void Notify(Event event);
+		void Notify(Observer::Event event);
 	private:
 		Transform m_pivotPosition{};
 		Transform m_localPosition{};

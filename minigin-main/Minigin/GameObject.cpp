@@ -165,7 +165,7 @@ namespace bgn
 
 #pragma region Observers
 	void GameObject::AddObserver(Observer* observer) {
-		observer->OnAdd();
+		
 		m_observers.push_back(observer);
 	}
 
@@ -173,7 +173,8 @@ namespace bgn
 		m_observers.erase(std::remove(m_observers.begin(), m_observers.end(), observer), m_observers.end());
 	}
 
-	void GameObject::Notify(Event event) {
+	void GameObject::Notify(Observer::Event event)
+	{ 
 		for (Observer* observer : m_observers) {
 			observer->OnNotify(event);
 		}

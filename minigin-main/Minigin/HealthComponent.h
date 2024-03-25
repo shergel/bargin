@@ -16,36 +16,11 @@ namespace bgn
 		HealthComponent(HealthComponent&& other) = delete;
 		HealthComponent& operator=(const HealthComponent& other) = delete;
 		HealthComponent& operator=(HealthComponent&& other) = delete;
+		
+		void Update( [[maybe_unused]] float deltaTime);
 
-		void SetHealth(const int value) 
-		{ 
-			if(!HasHealthLeft() && (value) >= m_minHealth)  //REVIVE
-			{ 
-				auto ic = m_parent->GetComponent<ImageComponent>();
-				if (ic)
-				{
-					ic->SetVisible(true);
-					std::cout << "revive\n";
-					m_parent->Notify(Event::PlayerRevived);
-				}
-				
-			}
-			else if (HasHealthLeft() && (value) < m_minHealth) //KILL
-			{ 
-				auto ic = m_parent->GetComponent<ImageComponent>();
-				if(ic)
-				{
-					ic->SetVisible(false);
-					std::cout << "kill\n";
-					m_parent->Notify(Event::PlayerDied);
-				}
-				
-				//m_parent->Destroy(); /* to do : eventually uncomment this so obj can actually be destroyed */
-			}
-			m_health = value; 
-		}
-
-		void IncrDecrHealth(const int value) { SetHealth(m_health + value); }
+		void SetHealth(const int value);
+		void IncrDecrHealth(const int value) { 	SetHealth(m_health + value);}
 		void IncreaseHealth(const unsigned int value = 1) { SetHealth(m_health + value); }
 		void DecreaseHealth(const unsigned int value = 1) { SetHealth(m_health - value); }
 
@@ -60,5 +35,7 @@ namespace bgn
 		int m_health;
 		int m_maxHealth;
 		int m_minHealth;
+		bool m_flagBuffer = false; //to make sure we don't spam lives
+		float m_counter{};
 	};
 }

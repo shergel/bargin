@@ -1,16 +1,16 @@
 #include "GameObject.h"
-#include "SetHealthCommand.h"
+#include "AddSubtractHealthCommand.h"
 #include "HealthComponent.h"
 
 namespace bgn
 {
-	void SetHealthCommand::Execute()
+	void AddSubtractHealthCommand::Execute()
 	{
 		HealthComponent* component = m_targetObj->GetComponent<HealthComponent>();
 
 		if (component == nullptr) return; //todo assert
 
-		component->SetHealth(m_value);
+		component->IncrDecrHealth(m_value);
 	}
 
 }
