@@ -24,6 +24,8 @@ namespace bgn
 		default:
 			break;
 		}
+
+		m_hasMessage = true;
 	}
 
 	void   LifeObserver::LifeObserver::OnPlayerDied()

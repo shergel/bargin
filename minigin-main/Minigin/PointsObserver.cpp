@@ -21,6 +21,8 @@ namespace bgn
 		default:
 			break;
 		}
+
+		m_hasMessage = true;
 	}
 
 	void   PointsObserver::OnPointsAdded()

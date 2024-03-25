@@ -39,7 +39,7 @@ void bgn::TextComponent::Render() const
 
 		if (m_parent != nullptr)
 		{
-			pos = m_parent->GetWorldPosition();
+			pos = m_parent->GetWorldPosition() + m_transform.GetPosition();
 		}
 
 		Renderer::GetInstance().RenderTexture(*m_textTexture, pos.x, pos.y);
@@ -53,9 +53,9 @@ void bgn::TextComponent::SetText(const std::string& text)
 	m_needsUpdate = true;
 }
 
-//void bgn::TextComponent::SetPosition(const float x, const float y)
-//{
-//	m_transform.SetPosition(x, y, 0.0f);
-//}
+void bgn::TextComponent::SetLocalPosition(const float x, const float y)
+{
+	m_transform.SetPosition(x, y, 0.0f);
+}
 
 
