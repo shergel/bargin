@@ -12,6 +12,8 @@
 #include <chrono> //
 #include <thread> //
 
+#include <steam_api.h>
+
 SDL_Window* g_window{};
 
 void PrintSDLVersion()
@@ -109,6 +111,7 @@ void bgn::Bargin::Run(const std::function<void()>& load)
 			lag -= fixedTime;
 		}
 
+		SteamAPI_RunCallbacks();
 		sceneManager.Update(deltaTime);
 		renderer.Render();
 

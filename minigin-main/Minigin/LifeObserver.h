@@ -23,7 +23,7 @@ namespace bgn
 
     private:
         bool m_hasMessage = false;
-        int m_livesCount;
+        int m_livesCount{};
 
         void OnPlayerDied();
         void OnPlayerRevived();

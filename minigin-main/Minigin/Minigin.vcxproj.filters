@@ -165,6 +165,9 @@
     <ClInclude Include="AddSubtractPointsCommand.h">
       <Filter>Header Files\InputManager.h</Filter>
     </ClInclude>
+    <ClInclude Include="..\3rdParty\steamworks\public\steam\steam_api.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
