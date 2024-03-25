@@ -1,5 +1,6 @@
 #pragma once
 #include "Observer.h"
+#include <iostream>
 
 namespace bgn
 {
@@ -18,6 +19,7 @@ namespace bgn
         void OnPlayerDied();
         void OnPlayerRevived();
         void OnPlayerChangedHealth();
+        const std::string m_messagePrefix = "# lives : ";
     };
 
 }

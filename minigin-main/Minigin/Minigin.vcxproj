@@ -183,6 +183,7 @@
     <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_rectpack.h" />
     <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_textedit.h" />
     <ClInclude Include="..\3rdParty\imgui-1.90.4\imstb_truetype.h" />
+    <ClInclude Include="AddSubtractPointsCommand.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Font.h" />
@@ -201,6 +202,7 @@
     <ClInclude Include="Move2DCommand.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="PointsComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RotationComponent.h" />
@@ -219,6 +221,7 @@
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_plot.cpp" />
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_tables.cpp" />
     <ClCompile Include="..\3rdParty\imgui-1.90.4\imgui_widgets.cpp" />
+    <ClCompile Include="AddSubtractPointsCommand.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="LifeObserver.cpp" />
     <ClCompile Include="AddSubtractHealthCommand.cpp" />
@@ -239,6 +242,9 @@
     <ClCompile Include="Bargin.cpp" />
     <ClCompile Include="Move2DCommand.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="PointsComponent.cpp" />
+    <ClCompile Include="PointsObserver.cpp" />
+    <ClCompile Include="PointsObserver.h" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="RotationComponent.cpp" />

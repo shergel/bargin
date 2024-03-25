@@ -28,19 +28,19 @@ namespace bgn
 
 	void   LifeObserver::LifeObserver::OnPlayerDied()
 	{	
-		std::cout << m_livesCount << std::endl;
+		std::cout << m_messagePrefix << m_livesCount << std::endl;
 	}
 
 	void   LifeObserver::LifeObserver::OnPlayerRevived()
 	{
 		
-		std::cout << m_livesCount << std::endl;
+		std::cout << m_messagePrefix << m_livesCount << std::endl;
 	}
 
 	void   LifeObserver::LifeObserver::OnPlayerChangedHealth()
 	{
 		
-		std::cout << m_livesCount << std::endl;
+		std::cout << m_messagePrefix << m_livesCount << std::endl;
 	}
 
 

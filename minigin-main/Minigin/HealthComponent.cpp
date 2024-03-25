@@ -5,7 +5,7 @@ void bgn::HealthComponent::Update(float deltaTime)
 	if (m_flagBuffer)
 	{
 		m_counter += deltaTime;
-		if (m_counter >= 0.05f)
+		if (m_counter >= 0.5f)
 		{
 			m_counter = 0;
 			m_flagBuffer = false;

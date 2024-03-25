@@ -9,7 +9,9 @@ namespace bgn
         {
             PlayerHealthChanged,
             PlayerDied,
-            PlayerRevived
+            PlayerRevived,
+            PointsAdded,
+            PointsRemoved
         };
 
         struct Event

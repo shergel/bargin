@@ -159,6 +159,12 @@
     <ClInclude Include="Observer.h">
       <Filter>Header Files\Observers</Filter>
     </ClInclude>
+    <ClInclude Include="PointsComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSubtractPointsCommand.h">
+      <Filter>Header Files\InputManager.h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -265,6 +271,18 @@
     </ClCompile>
     <ClCompile Include="HealthComponent.cpp">
       <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PointsObserver.cpp">
+      <Filter>Source Files\Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="PointsComponent.cpp">
+      <Filter>Source Files\Main\Scene\GameObject\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSubtractPointsCommand.cpp">
+      <Filter>Source Files\Main\InputManager\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PointsObserver.h">
+      <Filter>Header Files\Observers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
